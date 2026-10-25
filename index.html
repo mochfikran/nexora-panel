@@ -1,1 +1,431 @@
 
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#080b14">
+  <meta name="description" content="NEXORA PANEL - Solusi panel dan hosting digital.">
+  <title>NEXORA PANEL | Digital Infrastructure</title>
+
+  <style>
+    :root {
+      --bg: #080b14;
+      --surface: #101725;
+      --blue: #1687ff;
+      --orange: #ff8a24;
+      --text: #f2f6ff;
+      --muted: #9aa8bd;
+      --border: rgba(255,255,255,.09);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      width: min(1100px, 90%);
+      margin: auto;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: rgba(8,11,20,.9);
+      border-bottom: 1px solid var(--border);
+      backdrop-filter: blur(14px);
+    }
+
+    nav {
+      min-height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+    }
+
+    .logo {
+      font-size: 21px;
+      font-weight: 900;
+      letter-spacing: 1px;
+    }
+
+    .logo span {
+      color: var(--blue);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 22px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .nav-links a:hover {
+      color: white;
+    }
+
+    .button {
+      display: inline-block;
+      padding: 12px 19px;
+      border-radius: 10px;
+      background: var(--blue);
+      color: white;
+      font-weight: 700;
+      border: 1px solid transparent;
+      transition: transform .2s, background .2s;
+    }
+
+    .button:hover {
+      transform: translateY(-2px);
+      background: #0874e8;
+    }
+
+    .button-outline {
+      background: transparent;
+      border-color: var(--border);
+    }
+
+    .button-outline:hover {
+      background: var(--surface);
+    }
+
+    .hero {
+      position: relative;
+      padding: 100px 0 85px;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      width: 300px;
+      height: 300px;
+      top: 10px;
+      right: -100px;
+      background: var(--blue);
+      opacity: .14;
+      filter: blur(100px);
+      pointer-events: none;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      padding: 7px 12px;
+      margin-bottom: 23px;
+      border: 1px solid rgba(22,135,255,.35);
+      border-radius: 30px;
+      background: rgba(22,135,255,.08);
+      color: #81bcff;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 1px;
+    }
+
+    h1 {
+      max-width: 760px;
+      font-size: clamp(38px, 7vw, 70px);
+      line-height: 1.08;
+      letter-spacing: -2px;
+      margin-bottom: 24px;
+    }
+
+    h1 span {
+      color: var(--blue);
+    }
+
+    h1 .accent {
+      color: var(--orange);
+    }
+
+    .hero p {
+      max-width: 580px;
+      color: var(--muted);
+      font-size: 17px;
+      margin-bottom: 30px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .status {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      margin-top: 35px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .status-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--orange);
+      box-shadow: 0 0 12px rgba(255,138,36,.6);
+    }
+
+    section {
+      padding: 65px 0;
+    }
+
+    .section-heading {
+      margin-bottom: 30px;
+    }
+
+    .section-heading small {
+      color: var(--orange);
+      font-weight: 800;
+      letter-spacing: 2px;
+    }
+
+    h2 {
+      font-size: clamp(27px, 4vw, 38px);
+      line-height: 1.2;
+      margin-top: 8px;
+    }
+
+    .section-heading p {
+      color: var(--muted);
+      margin-top: 10px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .card {
+      background: linear-gradient(145deg, #111a2b, #0b101b);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 25px;
+      transition: transform .2s, border-color .2s;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(22,135,255,.55);
+    }
+
+    .card-icon {
+      display: grid;
+      place-items: center;
+      width: 48px;
+      height: 48px;
+      margin-bottom: 20px;
+      border-radius: 12px;
+      background: rgba(22,135,255,.12);
+      color: #65afff;
+      font-size: 23px;
+    }
+
+    .card h3 {
+      font-size: 19px;
+      margin-bottom: 8px;
+    }
+
+    .card p {
+      color: var(--muted);
+      font-size: 14px;
+      margin-bottom: 20px;
+    }
+
+    .card a {
+      color: #78b9ff;
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    .notice {
+      padding: 25px;
+      border-radius: 15px;
+      border: 1px solid rgba(255,138,36,.25);
+      background: rgba(255,138,36,.05);
+    }
+
+    .notice h3 {
+      margin-bottom: 8px;
+      color: var(--orange);
+    }
+
+    .notice p {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    footer {
+      margin-top: 30px;
+      border-top: 1px solid var(--border);
+      padding: 28px 0;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .footer-inner {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    @media (max-width: 720px) {
+      .nav-links {
+        display: none;
+      }
+
+      .hero {
+        padding: 75px 0 60px;
+      }
+
+      .grid {
+        grid-template-columns: 1fr;
+      }
+
+      h1 {
+        letter-spacing: -1px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        scroll-behavior: auto !important;
+        transition: none !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <nav class="container">
+      <a href="#" class="logo">NEXORA<span>.</span></a>
+
+      <div class="nav-links">
+        <a href="#beranda">Beranda</a>
+        <a href="#layanan">Layanan</a>
+        <a href="#tentang">Tentang</a>
+      </div>
+
+      <a href="#layanan" class="button">Jelajahi</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" id="beranda">
+      <div class="container">
+        <span class="eyebrow">DIGITAL INFRASTRUCTURE</span>
+
+        <h1>
+          Build Beyond<br>
+          <span>Limits</span><span class="accent">.</span>
+        </h1>
+
+        <p>
+          Temukan solusi panel dan hosting digital untuk mendukung
+          proyekmu. Infrastruktur yang tepat dimulai dari pilihan
+          yang tepat.
+        </p>
+
+        <div class="hero-actions">
+          <a href="#layanan" class="button">Lihat Layanan →</a>
+          <a href="#tentang" class="button button-outline">Kenali NEXORA</a>
+        </div>
+
+        <div class="status">
+          <span class="status-dot"></span>
+          <span>Website dalam tahap pengembangan</span>
+        </div>
+      </div>
+    </section>
+
+    <section id="layanan">
+      <div class="container">
+        <div class="section-heading">
+          <small>LAYANAN KAMI</small>
+          <h2>Infrastruktur untuk proyekmu.</h2>
+          <p>Pilih kategori layanan yang sesuai dengan kebutuhanmu.</p>
+        </div>
+
+        <div class="grid">
+          <article class="card">
+            <div class="card-icon">⌘</div>
+            <h3>Game Panel</h3>
+            <p>
+              Rencanakan pengelolaan server game melalui panel
+              yang sesuai dengan kebutuhan proyek.
+            </p>
+            <a href="#tentang">Pelajari lebih lanjut →</a>
+          </article>
+
+          <article class="card">
+            <div class="card-icon">⌁</div>
+            <h3>Egg VPS & Bot</h3>
+            <p>
+              Pilihan lingkungan terisolasi untuk bot dan aplikasi,
+              bergantung pada paket penyedia.
+            </p>
+            <a href="#tentang">Pelajari lebih lanjut →</a>
+          </article>
+
+          <article class="card">
+            <div class="card-icon">⌘</div>
+            <h3>Web Hosting</h3>
+            <p>
+              Persiapkan kebutuhan hosting untuk aplikasi web
+              berbasis Node.js, PHP, dan teknologi terkait.
+            </p>
+            <a href="#tentang">Pelajari lebih lanjut →</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="tentang">
+      <div class="container">
+        <div class="notice">
+          <h3>🚧 NEXORA sedang dibangun</h3>
+          <p>
+            Ini adalah tahap awal tampilan website. Katalog produk,
+            harga, akun pengguna, database, pemesanan, pembayaran,
+            dan provisioning server belum aktif. Jangan gunakan
+            halaman ini untuk melakukan pembayaran.
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-inner">
+      <span>© 2026 NEXORA PANEL</span>
+      <span>Built for the next generation.</span>
+    </div>
+  </footer>
+</body>
+    </html>
+  
