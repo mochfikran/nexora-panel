@@ -2,430 +2,270 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#080b14">
-  <meta name="description" content="NEXORA PANEL - Solusi panel dan hosting digital.">
-  <title>NEXORA PANEL | Digital Infrastructure</title>
-
-  <style>
-    :root {
-      --bg: #080b14;
-      --surface: #101725;
-      --blue: #1687ff;
-      --orange: #ff8a24;
-      --text: #f2f6ff;
-      --muted: #9aa8bd;
-      --border: rgba(255,255,255,.09);
-    }
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      background: var(--bg);
-      color: var(--text);
-      font-family: Arial, Helvetica, sans-serif;
-      line-height: 1.6;
-      overflow-x: hidden;
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    .container {
-      width: min(1100px, 90%);
-      margin: auto;
-    }
-
-    header {
-      position: sticky;
-      top: 0;
-      z-index: 10;
-      background: rgba(8,11,20,.9);
-      border-bottom: 1px solid var(--border);
-      backdrop-filter: blur(14px);
-    }
-
-    nav {
-      min-height: 72px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 18px;
-    }
-
-    .logo {
-      font-size: 21px;
-      font-weight: 900;
-      letter-spacing: 1px;
-    }
-
-    .logo span {
-      color: var(--blue);
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 22px;
-      color: var(--muted);
-      font-size: 14px;
-    }
-
-    .nav-links a:hover {
-      color: white;
-    }
-
-    .button {
-      display: inline-block;
-      padding: 12px 19px;
-      border-radius: 10px;
-      background: var(--blue);
-      color: white;
-      font-weight: 700;
-      border: 1px solid transparent;
-      transition: transform .2s, background .2s;
-    }
-
-    .button:hover {
-      transform: translateY(-2px);
-      background: #0874e8;
-    }
-
-    .button-outline {
-      background: transparent;
-      border-color: var(--border);
-    }
-
-    .button-outline:hover {
-      background: var(--surface);
-    }
-
-    .hero {
-      position: relative;
-      padding: 100px 0 85px;
-      overflow: hidden;
-    }
-
-    .hero::before {
-      content: "";
-      position: absolute;
-      width: 300px;
-      height: 300px;
-      top: 10px;
-      right: -100px;
-      background: var(--blue);
-      opacity: .14;
-      filter: blur(100px);
-      pointer-events: none;
-    }
-
-    .eyebrow {
-      display: inline-block;
-      padding: 7px 12px;
-      margin-bottom: 23px;
-      border: 1px solid rgba(22,135,255,.35);
-      border-radius: 30px;
-      background: rgba(22,135,255,.08);
-      color: #81bcff;
-      font-size: 12px;
-      font-weight: 700;
-      letter-spacing: 1px;
-    }
-
-    h1 {
-      max-width: 760px;
-      font-size: clamp(38px, 7vw, 70px);
-      line-height: 1.08;
-      letter-spacing: -2px;
-      margin-bottom: 24px;
-    }
-
-    h1 span {
-      color: var(--blue);
-    }
-
-    h1 .accent {
-      color: var(--orange);
-    }
-
-    .hero p {
-      max-width: 580px;
-      color: var(--muted);
-      font-size: 17px;
-      margin-bottom: 30px;
-    }
-
-    .hero-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-    }
-
-    .status {
-      display: flex;
-      align-items: center;
-      gap: 9px;
-      margin-top: 35px;
-      color: var(--muted);
-      font-size: 13px;
-    }
-
-    .status-dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: var(--orange);
-      box-shadow: 0 0 12px rgba(255,138,36,.6);
-    }
-
-    section {
-      padding: 65px 0;
-    }
-
-    .section-heading {
-      margin-bottom: 30px;
-    }
-
-    .section-heading small {
-      color: var(--orange);
-      font-weight: 800;
-      letter-spacing: 2px;
-    }
-
-    h2 {
-      font-size: clamp(27px, 4vw, 38px);
-      line-height: 1.2;
-      margin-top: 8px;
-    }
-
-    .section-heading p {
-      color: var(--muted);
-      margin-top: 10px;
-    }
-
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 18px;
-    }
-
-    .card {
-      background: linear-gradient(145deg, #111a2b, #0b101b);
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 25px;
-      transition: transform .2s, border-color .2s;
-    }
-
-    .card:hover {
-      transform: translateY(-4px);
-      border-color: rgba(22,135,255,.55);
-    }
-
-    .card-icon {
-      display: grid;
-      place-items: center;
-      width: 48px;
-      height: 48px;
-      margin-bottom: 20px;
-      border-radius: 12px;
-      background: rgba(22,135,255,.12);
-      color: #65afff;
-      font-size: 23px;
-    }
-
-    .card h3 {
-      font-size: 19px;
-      margin-bottom: 8px;
-    }
-
-    .card p {
-      color: var(--muted);
-      font-size: 14px;
-      margin-bottom: 20px;
-    }
-
-    .card a {
-      color: #78b9ff;
-      font-size: 14px;
-      font-weight: 700;
-    }
-
-    .notice {
-      padding: 25px;
-      border-radius: 15px;
-      border: 1px solid rgba(255,138,36,.25);
-      background: rgba(255,138,36,.05);
-    }
-
-    .notice h3 {
-      margin-bottom: 8px;
-      color: var(--orange);
-    }
-
-    .notice p {
-      color: var(--muted);
-      font-size: 14px;
-    }
-
-    footer {
-      margin-top: 30px;
-      border-top: 1px solid var(--border);
-      padding: 28px 0;
-      color: var(--muted);
-      font-size: 13px;
-    }
-
-    .footer-inner {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
-      gap: 12px;
-    }
-
-    @media (max-width: 720px) {
-      .nav-links {
-        display: none;
-      }
-
-      .hero {
-        padding: 75px 0 60px;
-      }
-
-      .grid {
-        grid-template-columns: 1fr;
-      }
-
-      h1 {
-        letter-spacing: -1px;
-      }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      *, *::before, *::after {
-        scroll-behavior: auto !important;
-        transition: none !important;
-      }
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#070b14">
+<meta name="description" content="NEXORA PANEL menyediakan solusi panel game, hosting bot, Node.js, dan PHP.">
+<title>NEXORA PANEL | Digital Infrastructure</title>
+<style>
+:root {
+  --bg:#070b14;
+  --card:#0e1626;
+  --blue:#168cff;
+  --orange:#ff8a24;
+  --text:#f3f7ff;
+  --muted:#9aa9bf;
+  --border:#20314b;
+}
+* {box-sizing:border-box;margin:0;padding:0}
+html {scroll-behavior:smooth}
+body {
+  background:var(--bg);
+  color:var(--text);
+  font-family:Arial,Helvetica,sans-serif;
+  line-height:1.6;
+}
+a {color:inherit;text-decoration:none}
+.container {width:min(1100px,90%);margin:auto}
+header {
+  position:sticky;top:0;z-index:10;
+  background:rgba(7,11,20,.94);
+  border-bottom:1px solid var(--border);
+}
+.nav {
+  min-height:68px;display:flex;align-items:center;
+  justify-content:space-between;gap:16px;
+}
+.logo {font-size:19px;font-weight:900;letter-spacing:1px}
+.logo span {color:var(--blue)}
+nav {display:flex;gap:20px;font-size:13px;color:var(--muted)}
+nav a:hover {color:var(--orange)}
+.hero {padding:76px 0 65px;text-align:center}
+.tag {
+  display:inline-block;padding:6px 12px;border-radius:30px;
+  border:1px solid #174a78;color:#70bdff;font-size:12px;
+  margin-bottom:18px;
+}
+h1 {font-size:clamp(34px,7vw,62px);line-height:1.1;letter-spacing:-1.5px}
+h1 span {
+  color:var(--blue);
+  background:linear-gradient(90deg,#168cff,#ff8a24);
+  -webkit-background-clip:text;background-clip:text;
+  -webkit-text-fill-color:transparent;
+}
+.hero p {
+  color:var(--muted);max-width:590px;margin:20px auto 25px;
+  font-size:15px;
+}
+.button {
+  display:inline-block;background:var(--blue);color:white;
+  padding:12px 20px;border-radius:9px;font-weight:bold;font-size:14px;
+}
+.button:hover {background:#0874db}
+section {padding:45px 0}
+.section-head {margin-bottom:25px}
+.eyebrow {color:var(--orange);font-size:12px;font-weight:bold;letter-spacing:2px}
+h2 {font-size:clamp(25px,4vw,34px);margin:5px 0}
+.section-desc {color:var(--muted);font-size:14px}
+.catalog {
+  display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:17px;
+}
+.product {
+  border:1px solid var(--border);border-radius:15px;
+  padding:23px;background:linear-gradient(145deg,#101b2d,#0a101c);
+  transition:border-color .2s,transform .2s;
+}
+.product:hover {border-color:var(--blue);transform:translateY(-3px)}
+.product-icon {
+  width:44px;height:44px;display:grid;place-items:center;
+  border-radius:12px;background:#112b48;color:#70bdff;
+  font-size:22px;margin-bottom:17px;
+}
+.product h3 {font-size:19px;margin-bottom:7px}
+.product p {color:var(--muted);font-size:13px;min-height:42px}
+.product-label {
+  display:inline-block;color:#ffbd7c;background:#382312;
+  border-radius:5px;padding:4px 8px;font-size:10px;
+  font-weight:bold;margin:13px 0;
+}
+.product-bottom {
+  border-top:1px solid var(--border);padding-top:15px;
+  display:flex;align-items:center;justify-content:space-between;gap:10px;
+}
+.price {font-size:14px;font-weight:bold}
+.price small {display:block;color:var(--muted);font-weight:normal;font-size:11px}
+.soon {
+  border:1px solid #34445a;color:#8fa1b9;
+  border-radius:7px;padding:8px 10px;font-size:11px;
+}
+.notice {
+  margin-top:20px;padding:15px;border:1px solid #4b351d;
+  background:#17130f;border-radius:10px;color:#d8b99b;font-size:12px;
+}
+.features {
+  display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;
+}
+.feature {
+  background:var(--card);border:1px solid var(--border);
+  padding:18px;border-radius:12px;
+}
+.feature h3 {font-size:15px;margin-bottom:5px}
+.feature p {font-size:12px;color:var(--muted)}
+.about-box {
+  border:1px solid var(--border);border-radius:15px;
+  padding:25px;background:var(--card);
+}
+.about-box p {color:var(--muted);font-size:14px;margin-top:8px}
+footer {
+  margin-top:35px;border-top:1px solid var(--border);
+  padding:25px 0;color:var(--muted);font-size:12px;text-align:center;
+}
+footer strong {color:var(--text)}
+@media(max-width:600px) {
+  .nav {padding:13px 0;align-items:flex-start;flex-direction:column;gap:8px}
+  nav {gap:15px;flex-wrap:wrap}
+  .hero {padding:58px 0 42px}
+  .catalog {grid-template-columns:1fr}
+  .features {grid-template-columns:1fr}
+  .product p {min-height:0}
+}
+@media(prefers-reduced-motion:reduce) {
+  html {scroll-behavior:auto}
+  *,*::before,*::after {transition:none!important}
+}
+</style>
 </head>
-
 <body>
-  <header>
-    <nav class="container">
-      <a href="#" class="logo">NEXORA<span>.</span></a>
-
-      <div class="nav-links">
-        <a href="#beranda">Beranda</a>
-        <a href="#layanan">Layanan</a>
-        <a href="#tentang">Tentang</a>
-      </div>
-
-      <a href="#layanan" class="button">Jelajahi</a>
+<header>
+  <div class="container nav">
+    <a class="logo" href="#home">NEXORA<span> PANEL</span></a>
+    <nav aria-label="Navigasi utama">
+      <a href="#home">Beranda</a>
+      <a href="#catalog">Katalog</a>
+      <a href="#keunggulan">Keunggulan</a>
+      <a href="#about">Tentang</a>
     </nav>
-  </header>
+  </div>
+</header>
 
-  <main>
-    <section class="hero" id="beranda">
-      <div class="container">
-        <span class="eyebrow">DIGITAL INFRASTRUCTURE</span>
-
-        <h1>
-          Build Beyond<br>
-          <span>Limits</span><span class="accent">.</span>
-        </h1>
-
-        <p>
-          Temukan solusi panel dan hosting digital untuk mendukung
-          proyekmu. Infrastruktur yang tepat dimulai dari pilihan
-          yang tepat.
-        </p>
-
-        <div class="hero-actions">
-          <a href="#layanan" class="button">Lihat Layanan →</a>
-          <a href="#tentang" class="button button-outline">Kenali NEXORA</a>
-        </div>
-
-        <div class="status">
-          <span class="status-dot"></span>
-          <span>Website dalam tahap pengembangan</span>
-        </div>
-      </div>
-    </section>
-
-    <section id="layanan">
-      <div class="container">
-        <div class="section-heading">
-          <small>LAYANAN KAMI</small>
-          <h2>Infrastruktur untuk proyekmu.</h2>
-          <p>Pilih kategori layanan yang sesuai dengan kebutuhanmu.</p>
-        </div>
-
-        <div class="grid">
-          <article class="card">
-            <div class="card-icon">⌘</div>
-            <h3>Game Panel</h3>
-            <p>
-              Rencanakan pengelolaan server game melalui panel
-              yang sesuai dengan kebutuhan proyek.
-            </p>
-            <a href="#tentang">Pelajari lebih lanjut →</a>
-          </article>
-
-          <article class="card">
-            <div class="card-icon">⌁</div>
-            <h3>Egg VPS & Bot</h3>
-            <p>
-              Pilihan lingkungan terisolasi untuk bot dan aplikasi,
-              bergantung pada paket penyedia.
-            </p>
-            <a href="#tentang">Pelajari lebih lanjut →</a>
-          </article>
-
-          <article class="card">
-            <div class="card-icon">⌘</div>
-            <h3>Web Hosting</h3>
-            <p>
-              Persiapkan kebutuhan hosting untuk aplikasi web
-              berbasis Node.js, PHP, dan teknologi terkait.
-            </p>
-            <a href="#tentang">Pelajari lebih lanjut →</a>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section id="tentang">
-      <div class="container">
-        <div class="notice">
-          <h3>🚧 NEXORA sedang dibangun</h3>
-          <p>
-            Ini adalah tahap awal tampilan website. Katalog produk,
-            harga, akun pengguna, database, pemesanan, pembayaran,
-            dan provisioning server belum aktif. Jangan gunakan
-            halaman ini untuk melakukan pembayaran.
-          </p>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer>
-    <div class="container footer-inner">
-      <span>© 2026 NEXORA PANEL</span>
-      <span>Built for the next generation.</span>
+<main>
+  <section class="hero" id="home">
+    <div class="container">
+      <div class="tag">DIGITAL INFRASTRUCTURE</div>
+      <h1>Build Beyond<br><span>Limits.</span></h1>
+      <p>
+        Temukan solusi panel dan hosting digital untuk menjalankan
+        proyek, bot, serta server kamu dalam satu tempat.
+      </p>
+      <a class="button" href="#catalog">Jelajahi Katalog ↓</a>
     </div>
-  </footer>
+  </section>
+
+  <section id="catalog">
+    <div class="container">
+      <div class="section-head">
+        <div class="eyebrow">PRODUK KAMI</div>
+        <h2>Pilih Layanan</h2>
+        <p class="section-desc">Katalog awal NEXORA PANEL. Informasi harga dan ketersediaan akan diumumkan setelah dikonfirmasi.</p>
+      </div>
+
+      <div class="catalog">
+        <article class="product">
+          <div class="product-icon">▦</div>
+          <h3>Pterodactyl Panel</h3>
+          <p>Panel pengelolaan server game dan aplikasi dengan antarmuka yang praktis.</p>
+          <span class="product-label">SEGERA HADIR</span>
+          <div class="product-bottom">
+            <div class="price">Segera diumumkan<small>Harga layanan</small></div>
+            <span class="soon">Belum tersedia</span>
+          </div>
+        </article>
+
+        <article class="product">
+          <div class="product-icon">⌘</div>
+          <h3>Egg VPS & Bot</h3>
+          <p>Lingkungan berbasis Docker untuk kebutuhan bot dan aplikasi yang kompatibel.</p>
+          <span class="product-label">SEGERA HADIR</span>
+          <div class="product-bottom">
+            <div class="price">Segera diumumkan<small>Harga layanan</small></div>
+            <span class="soon">Belum tersedia</span>
+          </div>
+        </article>
+
+        <article class="product">
+          <div class="product-icon">⌁</div>
+          <h3>Node.js Hosting</h3>
+          <p>Rencana layanan untuk menjalankan aplikasi Node.js dan proyek JavaScript.</p>
+          <span class="product-label">SEGERA HADIR</span>
+          <div class="product-bottom">
+            <div class="price">Segera diumumkan<small>Harga layanan</small></div>
+            <span class="soon">Belum tersedia</span>
+          </div>
+        </article>
+
+        <article class="product">
+          <div class="product-icon">⌘</div>
+          <h3>PHP Hosting</h3>
+          <p>Rencana hosting untuk website PHP dan proyek yang membutuhkan dukungan PHP.</p>
+          <span class="product-label">SEGERA HADIR</span>
+          <div class="product-bottom">
+            <div class="price">Segera diumumkan<small>Harga layanan</small></div>
+            <span class="soon">Belum tersedia</span>
+          </div>
+        </article>
+      </div>
+
+      <div class="notice">
+        <strong>Informasi:</strong> Katalog ini masih berupa tampilan awal.
+        Pembelian, pembayaran, login pelanggan, dan pembuatan layanan otomatis
+        belum aktif. Jangan melakukan pembayaran berdasarkan halaman ini.
+      </div>
+    </div>
+  </section>
+
+  <section id="keunggulan">
+    <div class="container">
+      <div class="section-head">
+        <div class="eyebrow">DIBANGUN UNTUK KAMU</div>
+        <h2>Fokus pada Hal Penting</h2>
+      </div>
+      <div class="features">
+        <div class="feature">
+          <h3>01. Ringan</h3>
+          <p>Tampilan tanpa framework besar agar tetap ringan di perangkat mobile.</p>
+        </div>
+        <div class="feature">
+          <h3>02. Responsif</h3>
+          <p>Layout menyesuaikan layar HP, tablet, dan komputer.</p>
+        </div>
+        <div class="feature">
+          <h3>03. Bertahap</h3>
+          <p>Fitur akan ditambahkan dan diuji sebelum digunakan untuk transaksi nyata.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="about">
+    <div class="container">
+      <div class="about-box">
+        <div class="eyebrow">TENTANG NEXORA</div>
+        <h2>Satu Tempat untuk Proyek Digital</h2>
+        <p>
+          NEXORA PANEL sedang dikembangkan sebagai marketplace layanan
+          digital. Informasi produk, harga, dan fitur akan diperbarui
+          setelah penyedia layanan serta sistem operasional siap.
+        </p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="container">
+    <strong>NEXORA PANEL</strong> · Digital Infrastructure<br>
+    © 2026 NEXORA PANEL. All rights reserved.
+  </div>
+</footer>
 </body>
-    </html>
-  
+</html>
